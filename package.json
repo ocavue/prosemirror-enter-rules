@@ -1,5 +1,5 @@
 {
-  "name": "pkg-name",
+  "name": "prosemirror-enter-rules",
   "type": "module",
   "version": "0.0.0",
   "packageManager": "pnpm@10.30.1",
@@ -7,12 +7,12 @@
   "author": "ocavue <ocavue@gmail.com>",
   "license": "MIT",
   "funding": "https://github.com/sponsors/ocavue",
-  "homepage": "https://github.com/ocavue/pkg-name#readme",
+  "homepage": "https://github.com/ocavue/prosemirror-enter-rules#readme",
   "repository": {
     "type": "git",
-    "url": "https://github.com/ocavue/pkg-name.git"
+    "url": "https://github.com/ocavue/prosemirror-enter-rules.git"
   },
-  "bugs": "https://github.com/ocavue/pkg-name/issues",
+  "bugs": "https://github.com/ocavue/prosemirror-enter-rules/issues",
   "keywords": [],
   "sideEffects": false,
   "main": "./dist/index.js",
