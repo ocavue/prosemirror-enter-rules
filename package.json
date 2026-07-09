@@ -26,6 +26,14 @@
       "import": "./dist/index.js"
     }
   },
+  "typesVersions": {
+    "*": {
+      "*": [
+        "./dist/*",
+        "./dist/index.d.ts"
+      ]
+    }
+  },
   "files": [
     "dist",
     "src"
