@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.6](https://github.com/ocavue/prosemirror-enter-rules/compare/v0.1.5...v0.1.6) (2026-07-09)
+
+
+### Bug Fixes
+
+* remove `typesVersions` from `package.json` ([#10](https://github.com/ocavue/prosemirror-enter-rules/issues/10)) ([f5bc9c2](https://github.com/ocavue/prosemirror-enter-rules/commit/f5bc9c2f1a20c89f7128bcf8b783ceddf41cb866))
+
 ## 0.1.5 (2026-02-22)
 
 
