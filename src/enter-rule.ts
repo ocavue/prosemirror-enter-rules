@@ -185,7 +185,7 @@ export function createEnterRulePlugin(options: {
   })
 }
 
-const OBJECT_REPLACEMENT_CHARACTER = '\uFFFC'
+const OBJECT_REPLACEMENT_CHARACTER = '\u{FFFC}'
 const MAX_MATCH = 200
 
 /**
