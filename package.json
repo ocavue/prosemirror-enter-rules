@@ -2,7 +2,7 @@
   "name": "prosemirror-enter-rules",
   "type": "module",
   "version": "0.1.6",
-  "packageManager": "pnpm@11.10.0",
+  "packageManager": "pnpm@12.18.0",
   "description": "Enter rules for ProseMirror",
   "author": "ocavue <ocavue@gmail.com>",
   "license": "MIT",
