@@ -202,4 +202,34 @@ describe('createEnterRulePlugin', () => {
     expect(handler).not.toHaveBeenCalled()
     view.destroy()
   })
+
+  it('should convert when the match starts at the start of a 200-character paragraph', () => {
+    const rule = createTextBlockEnterRule({
+      regex: /^```(\S*)$/,
+      type: schema.nodes.codeBlock,
+    })
+    const view = createView('```' + 'b'.repeat(197), [rule])
+
+    pressEnter(view)
+
+    expect(view.state.doc.firstChild!.type.name).toBe('codeBlock')
+    view.destroy()
+  })
+
+  it('should not convert when the match starts 200 characters before the cursor in a longer paragraph', () => {
+    // Enter rules only see the last 200 characters before the cursor, so `^`
+    // matches at the start of that window, not at the start of the paragraph.
+    const rule = createTextBlockEnterRule({
+      regex: /^```(\S*)$/,
+      type: schema.nodes.codeBlock,
+    })
+    const text = 'a```' + 'b'.repeat(197)
+    const view = createView(text, [rule])
+
+    pressEnter(view)
+
+    expect(view.state.doc.firstChild!.type.name).toBe('paragraph')
+    expect(view.state.doc.firstChild!.textContent).toBe(text)
+    view.destroy()
+  })
 })

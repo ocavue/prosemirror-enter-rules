@@ -203,8 +203,9 @@ function execEnterRules(
   const { $cursor } = selection
   if (!$cursor || $cursor.parent.type.spec.code) return false
 
+  const textStart = Math.max(0, $cursor.parentOffset - MAX_MATCH)
   const textBefore = $cursor.parent.textBetween(
-    Math.max(0, $cursor.parentOffset - MAX_MATCH),
+    textStart,
     $cursor.parentOffset,
     null,
     OBJECT_REPLACEMENT_CHARACTER,
@@ -213,14 +214,18 @@ function execEnterRules(
   for (const rule of rules) {
     rule.regex.lastIndex = 0
     const match = rule.regex.exec(textBefore)
-    const tr =
-      match &&
-      rule.handler({
-        state: view.state,
-        from: $cursor.pos - match[0].length,
-        to: $cursor.pos,
-        match,
-      })
+    // In a text block longer than MAX_MATCH, `textBefore` starts in the middle
+    // of the text block. For a match at its first character, `^` and lookbehind
+    // assertions test that cut instead of the real text before the match.
+    if (!match || (match.index === 0 && textStart > 0)) {
+      continue
+    }
+    const tr = rule.handler({
+      state: view.state,
+      from: $cursor.pos - match[0].length,
+      to: $cursor.pos,
+      match,
+    })
     if (!tr) {
       continue
     }
